@@ -23,7 +23,6 @@ services:
     links:
       - influxdb:srv-influxdb
     command: -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=srv-influxdb:8086
-    command: dockerize -wait tcp://influxdb:8086
     ports:
       - "8080:8080"
     networks:

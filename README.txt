@@ -98,8 +98,16 @@ Deployment:
 
 III. Additional steps:
 After you logged in the portal:
-- you can check the datasource is available,
+- you can check the data source is available,
 - you can create a dashboard -as you would like- based on your requirements
+- you can find a few examples: within "examples" directory
+select statements (examples):
+cpu usage-cadvisor-1week:
+SELECT derivative("value", 1s)/1000000000 FROM "cpu_usage_total" WHERE ("container_name" = 'cadvisor') AND time >= now() - 1w
+ok-docker-monitoring-0.9-METRICS.json:
+SELECT mean("value") FROM "cpu_usage_system" WHERE  ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name" fill(null)
+SELECT mean("value") FROM "memory_usage" WHERE ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name"  fill(null)
+SELECT mean("value") FROM "rx_bytes" WHERE $timeFilter GROUP BY time($__interval) fill(null)
 
 
 IV: POST task(s):

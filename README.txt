@@ -73,7 +73,7 @@ grafana.ini:
  [database]
  ...
 # PassDbUserNameHere
- ;user = ThereIsASpaceBeforeThePassword
+ ;user = ThereIsASpaceBeforeTheUserName
 #PassDbUserPassHere
  ;password = ThereIsASpaceBeforeThePassword
 
@@ -94,8 +94,8 @@ Deployment:
   docker-compose --compatibility up -d
 - check the webportal, - using the ip address of the host (where the grafana container is running)- and login to webpage, using admin user account (or other "right" user which have been set in the configuration file -before deployment):
   for example, visit the webpage to check:
-  - the historical data, via grafana -with authentication: via https://xxx.xxx.xxx.xxx:3000
-  - the actual information about host and container via cadvisor -without authentication:  https://xxx.xxx.xxx.xxx:8080
+  - the historical data, via grafana -with authentication: via http://xxx.xxx.xxx.xxx:3000
+  - the actual information about host and container via cadvisor -without authentication:  http://xxx.xxx.xxx.xxx:8080
 
 
 III. Additional steps:

@@ -11,7 +11,7 @@ We will deploy:
 - 3 containers, within docker environment:
  - cadvisor: this will collect the necessary information (for example: memory usage of containers, host) from docker daemon,directly
  - influxdb: the data will be stored in database (sq3lite)
- - graphana: graphical interface for metrics,historical data
+ - grafana: graphical interface for metrics,historical data
 - 2 networks:
  - backend: network link between containers (similar to internal network,without exposing ports to external network)
  - frontend: link between cadvisor+grafana and external network (using bridge driver)

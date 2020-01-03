@@ -70,6 +70,8 @@ grafana.ini:
  You can edit based on your expectations, for example: sqlite3 admin user name and password, certificate, etc
  for example:
  ;secret_key = ThereIsASpaceBeforeThePassword
+ [database]
+ ...
 # PassDbUserNameHere
  ;user = ThereIsASpaceBeforeThePassword
 #PassDbUserPassHere

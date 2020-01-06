@@ -13,12 +13,12 @@ We will deploy:
  - influxdb: the data will be stored in database (sq3lite)
  - grafana: graphical interface for metrics,historical data
 - 2 networks:
- - backend: network link between containers (similar to internal network,without exposing ports to external network)
+ - backend: network link between containers (internal network, without exposing port(s) to external network)
  - frontend: link between cadvisor+grafana and external network (using bridge driver)
 
 
 I. PRE-requierements:
-- ensure if everything goes well within your environment. For example: you have enough free space, docker daemon runs and works well, etc.
+- ensure if everything goes well within your environment. For example: you have enough free space, docker daemon is running and works well, etc.
 - create the necessary directory structure. We will store the data of containers here.
 For example:
 /srv/metrics-data/monitoring/influxdb
@@ -104,12 +104,12 @@ After you logged in the portal:
 - you can create a dashboard -as you would like- based on your requirements
 - you can find a few examples: within "examples" directory
 select statements (examples):
-cpu usage-cadvisor-1week:
-SELECT derivative("value", 1s)/1000000000 FROM "cpu_usage_total" WHERE ("container_name" = 'cadvisor') AND time >= now() - 1w
+cpu usage-cadvisor-1week.json:
+ SELECT derivative("value", 1s)/1000000000 FROM "cpu_usage_total" WHERE ("container_name" = 'cadvisor') AND time >= now() - 1w
 ok-docker-monitoring-0.9-METRICS.json:
-SELECT mean("value") FROM "cpu_usage_system" WHERE  ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name" fill(null)
-SELECT mean("value") FROM "memory_usage" WHERE ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name"  fill(null)
-SELECT mean("value") FROM "rx_bytes" WHERE $timeFilter GROUP BY time($__interval) fill(null)
+ SELECT mean("value") FROM "cpu_usage_system" WHERE  ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name" fill(null)
+ SELECT mean("value") FROM "memory_usage" WHERE ("container_name" = 'cadvisor') AND $timeFilter GROUP BY time($interval), "container_name"  fill(null)
+ SELECT mean("value") FROM "rx_bytes" WHERE $timeFilter GROUP BY time($__interval) fill(null)
 
 
 IV: POST task(s):
